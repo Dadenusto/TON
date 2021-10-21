@@ -7,6 +7,7 @@ contract Datatypes {
     uint8 public shortuInt;
     int256 public longInt;
     int public my256Int;
+    mapping (uint=>uint) myMap;
 
     //инициализация массива
     int[] myArray = [int256(0), 0];
@@ -74,6 +75,26 @@ contract Datatypes {
         
         timestamp = now;
 
+        myMap[1] = 9;
+        myMap[2] = 8;
+        myMap[3] = 7;
+        myMap[4] = 6;
     }
+
+    function getList() public returns (uint[]){
+        tvm.accept();
+        // полчаем минимальный по ключу элемент mapping
+        optional(uint, uint) currentOpt = myMap.min();
+        uint[] resArr;
+
+        while (currentOpt.hasValue()){// еслт ли значение
+            (uint key, uint val) = currentOpt.get();
+            resArr.push(val);
+            currentOpt = myMap.next(key);// переход к следующему элементу
+        }
+        return resArr;
+    }
+
+
 
 }
