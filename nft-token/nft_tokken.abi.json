@@ -1,0 +1,74 @@
+{
+	"ABI version": 2,
+	"version": "2.1",
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "createTokken",
+			"inputs": [
+				{"name":"name","type":"string"},
+				{"name":"faculty","type":"string"},
+				{"name":"age","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "tokkenToSale",
+			"inputs": [
+				{"name":"name","type":"string"},
+				{"name":"value","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getTokenOwner",
+			"inputs": [
+				{"name":"tokenId","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "getTokenSale",
+			"inputs": [
+				{"name":"tokenName","type":"string"}
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "getTokeninfo",
+			"inputs": [
+				{"name":"tokenId","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"tokenName","type":"string"},
+				{"name":"tokenFaculty","type":"string"},
+				{"name":"tokenAge","type":"uint256"}
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"},
+		{"components":[{"name":"name","type":"string"},{"name":"faculty","type":"string"},{"name":"age","type":"uint256"}],"name":"tokensArr","type":"tuple[]"},
+		{"name":"tokenToOwner","type":"map(uint256,uint256)"},
+		{"name":"tokenToSale","type":"optional(cell)"}
+	]
+}

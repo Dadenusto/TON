@@ -1,0 +1,5 @@
+tondev se start
+tondev sol create NAME
+tondev sol compile NAME.sol
+tondev c d NAME - v 9999999999
+tondev c r NAME
