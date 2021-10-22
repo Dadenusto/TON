@@ -11,7 +11,7 @@
 			]
 		},
 		{
-			"name": "createTokken",
+			"name": "createToken",
 			"inputs": [
 				{"name":"name","type":"string"},
 				{"name":"faculty","type":"string"},
@@ -21,21 +21,12 @@
 			]
 		},
 		{
-			"name": "tokkenToSale",
+			"name": "tokenToSale",
 			"inputs": [
 				{"name":"name","type":"string"},
 				{"name":"value","type":"uint256"}
 			],
 			"outputs": [
-			]
-		},
-		{
-			"name": "getTokenOwner",
-			"inputs": [
-				{"name":"tokenId","type":"uint256"}
-			],
-			"outputs": [
-				{"name":"value0","type":"uint256"}
 			]
 		},
 		{
@@ -68,7 +59,6 @@
 		{"name":"_timestamp","type":"uint64"},
 		{"name":"_constructorFlag","type":"bool"},
 		{"components":[{"name":"name","type":"string"},{"name":"faculty","type":"string"},{"name":"age","type":"uint256"}],"name":"tokensArr","type":"tuple[]"},
-		{"name":"tokenToOwner","type":"map(uint256,uint256)"},
 		{"name":"tokenToSale","type":"optional(cell)"}
 	]
 }

@@ -16,40 +16,23 @@ contract nft_tokken {
     }
 
     Token[] tokensArr;//хранение токенов
-    mapping (string=>uint) tokenToSale; //цены токена по имени(тк оно уникально по условию)
+    mapping (string=>uint) tokensAndPrice; //цены токена по имени(тк оно уникально по условию)
 
     // создания токена
-    function createTokken(string name, string faculty, uint age) public{
-        bool checkName = true;// переменная для проверки уникальности имени
-        for (uint i = 0; i<tokensArr.length; i++) {
-            if (tokensArr[i].name == name){// если имя совпадает с каким-либо
-                checkName = false;// переменная проверки false
-            }
-        }
-        require(checkName, 101);// проверка
-        tvm.accept();
+    function createToken(string name, string faculty, uint age) public checkNameInTokensArr(true, name){
         tokensArr.push(Token(name, faculty, age));
-        uint lastKeyNum = tokensArr.length - 1;
     }
 
     // выставить токен на продажу
-    function tokkenToSale(string name, uint value) public{
-        bool checkName = false;//существует ли имя в токенах
-        for (uint i = 0; i < tokensArr.length; i++) {
-            if (tokensArr[i].name == name){// если имя совпадает с каким-либо
-                checkName = true;// переменная проверки true
-            }
-        }
-        require(checkName, 101);
-        tvm.accept();
-        tokenToSale[name] = value;//добавляем цену для токена
+    function tokenToSale(string name, uint value) public checkNameInTokensArr(false, name){
+        tokensAndPrice[name] = value;//добавляем цену для токена
     }
 
     // ДОП ФУНКЦИИ ДЛЯ ПРОВЕРКИ
 
     // получаем цену токена по имени
     function getTokenSale(string tokenName) public view returns (uint) {
-        return tokenToSale[tokenName];
+        return tokensAndPrice[tokenName];
     }
 
     // получаем тнформацию о токене
@@ -67,5 +50,17 @@ contract nft_tokken {
         // Check that message has signature (msg.pubkey() is not zero) and message is signed with the owner's private key
         require(msg.pubkey() == tvm.pubkey(), 102);
         tvm.accept();
+    }
+
+    // модификатор проверки существования имни в массиве токенов
+    modifier checkNameInTokensArr (bool checkName, string name) {
+        for (uint i = 0; i < tokensArr.length; i++) {
+            if (tokensArr[i].name == name){// если имя совпадает с каким-либо(существует)
+                checkName = !checkName;// переменная проверки наоброт
+            }
+        }
+        require(checkName, 101);
+        tvm.accept();
+        _;
     }
 }
