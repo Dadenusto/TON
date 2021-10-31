@@ -11,24 +11,25 @@ import "baseStation.sol";
 // This is class that describes you smart contract.
 contract militaryUnit is gameObject{
 
-    int attackPower;
-    int defensePower;
+    int private attackPower;// переменная для хранения атаки
+    int private defensePower;// переменная для хранения защиты
 
-    baseStation myBS;
+    baseStation myBS;// переменная для хранения базы
     
     function checkAlive() public override{
         tvm.accept();
-        if(health<=0){
+        if(getHealth()<=0){
             myBS.delUnit(gameObject(msg.sender));
             sendTransactioAndDestroyWallet(msg.sender);
         }
     }
 
+    // атака на другой юнит
     function sendAttack(militaryUnit unitToAttack, int value) private view {
         tvm.accept();
         int at = value - getDefenseValue();
         if(at>0){
-            unitToAttack.getAttack(at);
+            unitToAttack.getAttack(at);// атака на юнит
         }
     }
 

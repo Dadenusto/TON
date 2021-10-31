@@ -11,8 +11,8 @@ import 'gameObject.Sol';
 
 contract baseStation is gameObject{
 
-    gameObject[] units;
-    int defensePower;
+    gameObject[] private units;// хранения списка юнитов
+    int private defensePower = 10; // хранения защиты
     
     constructor() public override{
         require(tvm.pubkey() != 0, 101);
@@ -20,12 +20,6 @@ contract baseStation is gameObject{
         defensePower = 10;
         tvm.accept();
     }
-    // получить защиту
-    function getHealth() private view returns (int){
-        tvm.accept();
-        return health;
-    }
-
     // добавить юнита
     function addUnit(gameObject unit) public{
         tvm.accept();
@@ -57,13 +51,15 @@ contract baseStation is gameObject{
     }
 
     // уничтожить всех юнитов
-    function destroyAllUnits() private{
+    function checkAlive()  public override{
         tvm.accept();
-        for(uint i = 0; i<units.length; i++){
-            units[i].sendTransactioAndDestroyWallet(units[i]);
+        if(getHealth()<=0){//если жизнь 0<=, то уничтожаем 
+            for(uint i = 0; i<units.length; i++){
+                units[i].sendTransactioAndDestroyWallet(units[i]);
+            }
+            delete units;
+            sendTransactioAndDestroyWallet(msg.sender);
         }
-        delete units;
-        sendTransactioAndDestroyWallet(msg.sender);
     }
     
 }

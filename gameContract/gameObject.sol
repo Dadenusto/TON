@@ -12,21 +12,26 @@ import "gameInterface.sol";
 // This is class that describes you smart contract.
 contract gameObject is gameInterface{
     // свойство жизней
-    int health = 5;
+    int private health = 5;
+
+    function getHealth() public view returns (int){
+        tvm.accept();
+        return health;
+    }
 
     // получить атаку
     function getAttack(int value) virtual external override{
         tvm.accept();
         require(msg.sender != address(this), 102);
         tvm.accept();
-        health -= value;
+        health -= value;// уменьшвем значение жизни
         checkAlive();
     }
     
     // проверить жив ли
     function checkAlive() public virtual{
         tvm.accept();
-        if(health<=0){
+        if(health<=0){//если жизнь 0<=, то уничтожаем 
             sendTransactioAndDestroyWallet(msg.sender);
         }
     }
