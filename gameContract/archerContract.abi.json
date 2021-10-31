@@ -1,0 +1,76 @@
+{
+	"ABI version": 2,
+	"version": "2.2",
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+				{"name":"bS","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getAttackValue",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "getDefenseValue",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "setAttackValue",
+			"inputs": [
+				{"name":"attack","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setDefenseValue",
+			"inputs": [
+				{"name":"defense","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getAttack",
+			"inputs": [
+				{"name":"value","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "sendTransactioAndDestroyWallet",
+			"inputs": [
+				{"name":"dest","type":"address"}
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"},
+		{"name":"health","type":"uint256"},
+		{"name":"attackPower","type":"uint256"},
+		{"name":"defensePower","type":"uint256"},
+		{"name":"myBS","type":"address"}
+	]
+}
