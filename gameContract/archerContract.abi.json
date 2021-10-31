@@ -1,6 +1,6 @@
 {
 	"ABI version": 2,
-	"version": "2.2",
+	"version": "2.1",
 	"header": ["time", "expire"],
 	"functions": [
 		{
@@ -16,7 +16,7 @@
 			"inputs": [
 			],
 			"outputs": [
-				{"name":"value0","type":"uint256"}
+				{"name":"value0","type":"int256"}
 			]
 		},
 		{
@@ -24,13 +24,13 @@
 			"inputs": [
 			],
 			"outputs": [
-				{"name":"value0","type":"uint256"}
+				{"name":"value0","type":"int256"}
 			]
 		},
 		{
 			"name": "setAttackValue",
 			"inputs": [
-				{"name":"attack","type":"uint256"}
+				{"name":"attack","type":"int256"}
 			],
 			"outputs": [
 			]
@@ -38,7 +38,7 @@
 		{
 			"name": "setDefenseValue",
 			"inputs": [
-				{"name":"defense","type":"uint256"}
+				{"name":"defense","type":"int256"}
 			],
 			"outputs": [
 			]
@@ -46,7 +46,7 @@
 		{
 			"name": "getAttack",
 			"inputs": [
-				{"name":"value","type":"uint256"}
+				{"name":"value","type":"int256"}
 			],
 			"outputs": [
 			]
@@ -68,9 +68,9 @@
 		{"name":"_pubkey","type":"uint256"},
 		{"name":"_timestamp","type":"uint64"},
 		{"name":"_constructorFlag","type":"bool"},
-		{"name":"health","type":"uint256"},
-		{"name":"attackPower","type":"uint256"},
-		{"name":"defensePower","type":"uint256"},
+		{"name":"health","type":"int256"},
+		{"name":"attackPower","type":"int256"},
+		{"name":"defensePower","type":"int256"},
 		{"name":"myBS","type":"address"}
 	]
 }

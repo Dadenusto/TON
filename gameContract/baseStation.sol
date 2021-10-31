@@ -12,7 +12,7 @@ import 'gameObject.Sol';
 contract baseStation is gameObject{
 
     gameObject[] units;
-    uint defensePower;
+    int defensePower;
     
     constructor() public override{
         require(tvm.pubkey() != 0, 101);
@@ -21,7 +21,7 @@ contract baseStation is gameObject{
         tvm.accept();
     }
     // получить защиту
-    function getHealth() private view returns (uint){
+    function getHealth() private view returns (int){
         tvm.accept();
         return health;
     }
@@ -51,7 +51,7 @@ contract baseStation is gameObject{
     }
 
     // получить значение защиты
-    function getDefenseValue() external view returns (uint){
+    function getDefenseValue() external view returns (int){
         tvm.accept();
         return defensePower;
     }

@@ -1,6 +1,6 @@
 {
 	"ABI version": 2,
-	"version": "2.2",
+	"version": "2.1",
 	"header": ["time", "expire"],
 	"functions": [
 		{
@@ -39,13 +39,13 @@
 			"inputs": [
 			],
 			"outputs": [
-				{"name":"value0","type":"uint256"}
+				{"name":"value0","type":"int256"}
 			]
 		},
 		{
 			"name": "getAttack",
 			"inputs": [
-				{"name":"value","type":"uint256"}
+				{"name":"value","type":"int256"}
 			],
 			"outputs": [
 			]
@@ -67,8 +67,8 @@
 		{"name":"_pubkey","type":"uint256"},
 		{"name":"_timestamp","type":"uint64"},
 		{"name":"_constructorFlag","type":"bool"},
-		{"name":"health","type":"uint256"},
+		{"name":"health","type":"int256"},
 		{"name":"units","type":"address[]"},
-		{"name":"defensePower","type":"uint256"}
+		{"name":"defensePower","type":"int256"}
 	]
 }
